@@ -20,7 +20,7 @@ public class EnvController {
 
         Map<String, String> myMap = new HashMap<>();
         myMap.put("PORT", PORT);
-        myMap.put("MEMORY_LIMIT", MEMORY_LIMIT);
+        myMap.put("MEMORY_LIMIT",  MEMORY_LIMIT);
         myMap.put("CF_INSTANCE_INDEX", CF_INSTANCE_INDEX);
         myMap.put("CF_INSTANCE_ADDR", CF_INSTANCE_ADDR);
         return myMap;
