@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/time-entries")
@@ -24,6 +25,7 @@ public class TimeEntryController {
     private TimeEntryRepository timeEntriesRepo;
     private final DistributionSummary timeEntrySummary;
     private final Counter actionCounter;
+    private static Logger log = Logger.getLogger(TimeEntryController.class.getName());
 
     public TimeEntryController(
             TimeEntryRepository timeEntriesRepo,
@@ -37,6 +39,7 @@ public class TimeEntryController {
 
     @PostMapping
     public ResponseEntity<TimeEntry> create(@RequestBody TimeEntry timeEntry) {
+        log.info("create() is call!");
         TimeEntry createdTimeEntry = timeEntriesRepo.create(timeEntry);
         actionCounter.increment();
         timeEntrySummary.record(timeEntriesRepo.list().size());
